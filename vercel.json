@@ -1,0 +1,10 @@
+{  
+    "version": 2,  
+    "builds": [  
+        { "src": "api/index.py", "use": "@vercel/python" }  // Specifies that this is a Python function  
+    ],  
+    "routes": [  
+        { "src": "/api/(.*)", "dest": "api/index.py" }, // Route all API requests to the index.py file  
+        { "src": "/", "dest": "/templates/index.html" }  // Route to the main index.html file  
+    ]  
+}  

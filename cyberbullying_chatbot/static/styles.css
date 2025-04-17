@@ -22,8 +22,6 @@ input {
     width: calc(100% - 22px);  
     padding: 10px;  
     margin-bottom: 10px;  
-    border: 1px solid #ccc;  
-    border-radius: 4px;  
 }  
 
 button {  
@@ -43,5 +41,4 @@ button:hover {
 .response {  
     margin-top: 20px;  
     font-size: 1.2em;  
-    min-height: 40px; /* Minimum height for response area */  
 }  

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Cyberbullying Chatbot</title>  
-    <link rel="stylesheet" href="https://cyberbullying-ten.vercel.app/static/styles.css"> <!-- Link to your CSS file -->  
+    <link rel="stylesheet" href="/static/styles.css"> <!-- Link to your CSS file -->  
     <script>  
         async function askQuestion() {  
             const questionInput = document.getElementById('question');  
@@ -23,7 +23,7 @@
             responseArea.innerHTML = "Typing...";  
 
             try {  
-                const response = await fetch('/ask', {  
+                const response = await fetch('/api/ask', {  // Update URL for Vercel serverless function  
                     method: 'POST',  
                     headers: {  
                         'Content-Type': 'application/x-www-form-urlencoded',  
