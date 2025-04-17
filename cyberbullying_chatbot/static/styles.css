@@ -41,4 +41,5 @@ button:hover {
 .response {  
     margin-top: 20px;  
     font-size: 1.2em;  
+    min-height: 40px; /* Minimum height for response area */  
 }  

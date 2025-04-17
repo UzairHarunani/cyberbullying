@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify  
+from flask import Flask, request, jsonify, render_template  
 import random  
 
 app = Flask(__name__)  
@@ -20,18 +20,21 @@ responses = {
         "Document the instances of bullying.",  
         "Consider reporting the behavior to the platform."  
     ],  
-    # Add more questions and responses as needed  
 }  
 
-@app.route('/ask', methods=['POST'])  
+@app.route('/')  
+def home():  
+    return render_template('index.html')  # Serve the HTML file  
+
+@app.route('/api/ask', methods=['POST'])  # API endpoint for questions  
 def ask():  
-    user_question = request.form['question'].lower()  
+    user_question = request.form['question'].lower()  # Get user question in lowercase  
     print(f"Received question: {user_question}")  # Debugging statement  
 
     for key in responses:  
-        if key in user_question:  # Check for a match in the predefined responses  
+        if key in user_question:  # Check if the question is in the predefined responses  
             answer = random.choice(responses[key])  # Randomly select a response  
-            return jsonify({'answer': answer})  # Return the answer in JSON format  
+            return jsonify({'answer': answer})  # Return the answer in JSON  
 
     return jsonify({'answer': "I'm sorry, I don't have an answer for that."})  # Default response  
 

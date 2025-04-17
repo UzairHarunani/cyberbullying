@@ -20,10 +20,10 @@
             }  
 
             const responseArea = document.getElementById('response');  
-            responseArea.innerHTML = "Typing...";  
+            responseArea.innerHTML = "Typing..."; // Show typing indicator  
 
             try {  
-                const response = await fetch('/api/ask', {  // Update URL for Vercel serverless function  
+                const response = await fetch('/api/ask', { // API endpoint for Vercel  
                     method: 'POST',  
                     headers: {  
                         'Content-Type': 'application/x-www-form-urlencoded',  
@@ -31,16 +31,16 @@
                     body: `question=${encodeURIComponent(questionValue)}`  
                 });  
 
-                const data = await response.json();  
+                const data = await response.json(); // Parse JSON response  
 
                 if (response.ok) {  
-                    responseArea.innerHTML = data.answer; // Display the response  
+                    responseArea.innerHTML = data.answer; // Display the answer  
                 } else {  
-                    responseArea.innerHTML = "Error: " + data.answer; // Show error from the server  
+                    responseArea.innerHTML = "Error: " + data.answer; // Show server error response  
                 }  
             } catch (error) {  
                 console.error("Error:", error);  
-                responseArea.innerHTML = "An error occurred. Please try again.";  
+                responseArea.innerHTML = "An error occurred. Please try again."; // Error message  
             }  
         }  
     </script>  
