@@ -1,46 +1,47 @@
 body {  
     font-family: Arial, sans-serif;  
-    background-color: #e9ecef; /* Light gray background */  
-    margin: 0; /* Remove default margin */  
-    padding: 20px; /* Padding around the page */  
+    margin: 0;  
+    padding: 20px;  
+    background-color: #f9f9f9;  
 }  
 
 .container {  
-    max-width: 600px; /* Maximum width of the container */  
-    margin: auto; /* Center the container */  
-    background: white; /* White background for the container */  
-    padding: 20px; /* Padding inside the container */  
-    border-radius: 8px; /* Rounded corners for the container */  
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */  
+    max-width: 600px;  
+    margin: auto;  
+    background: white;  
+    padding: 20px;  
+    border-radius: 8px;  
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  
 }  
 
-#questionInput {  
-    width: calc(100% - 22px); /* Full width minus padding */  
-    padding: 10px; /* Padding inside the input */  
-    margin-bottom: 10px; /* Space below the input */  
-    border: 1px solid #ccc; /* Light gray border */  
-    border-radius: 4px; /* Rounded corners for the input */  
-    font-size: 16px; /* Font size for the input */  
+h1 {  
+    text-align: center;  
 }  
 
-#askButton {  
-    padding: 10px 15px; /* Padding inside the button */  
-    background-color: #007bff; /* Bootstrap styles blue */  
-    color: white; /* White text color */  
-    border: none; /* Remove default border */  
-    border-radius: 4px; /* Rounded corners for the button */  
-    cursor: pointer; /* Change cursor to pointer on hover */  
-    font-size: 16px; /* Font size for the button */  
+input {  
+    width: calc(100% - 22px);  
+    padding: 10px;  
+    margin-bottom: 10px;  
+    border: 1px solid #ccc;  
+    border-radius: 4px;  
 }  
 
-#askButton:hover {  
-    background-color: #0056b3; /* Darker blue on hover */  
+button {  
+    width: 100%;  
+    padding: 10px;  
+    background-color: #007BFF;  
+    color: white;  
+    border: none;  
+    border-radius: 5px;  
+    cursor: pointer;  
 }  
 
-#response {  
-    margin-top: 15px; /* Space above the response */  
-    padding: 10px; /* Padding inside the response area */  
-    background-color: #f8f9fa; /* Light gray background for response */  
-    border-radius: 4px; /* Rounded corners for the response area */  
-    border: 1px solid #ccc; /* Light gray border */  
+button:hover {  
+    background-color: #0056b3;  
+}  
+
+.response {  
+    margin-top: 20px;  
+    font-size: 1.2em;  
+    min-height: 40px; /* Minimum height for response area */  
 }  
