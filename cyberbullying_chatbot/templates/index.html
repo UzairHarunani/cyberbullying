@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <title>Cyberbullying Chatbot</title>  
     <link rel="stylesheet" href="https://uzairharunani.github.io/cyberbullying/cyberbullying_chatbot/static/styles.css"> <!-- Link to your CSS file -->  
-    <script>  
+    <script> 
         async function askQuestion() {  
             const questionInput = document.getElementById('question');  
             if (!questionInput) {  
@@ -23,7 +23,7 @@
             responseArea.innerHTML = "Typing..."; // Show typing indicator  
 
             try {  
-                const response = await fetch('/api/ask', { // API endpoint for Vercel  
+                const response = await fetch('cyberbullying_chatbot/api/ask', { // API endpoint for Vercel  
                     method: 'POST',  
                     headers: {  
                         'Content-Type': 'application/x-www-form-urlencoded',  
