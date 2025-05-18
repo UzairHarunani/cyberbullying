@@ -1,43 +1,34 @@
-from flask import Flask, request, jsonify, render_template  
-import random  
+import openai
+from flask import Flask, render_template, request, jsonify
 
-app = Flask(__name__)  
+app = Flask(__name__)
 
-# Predefined responses for known questions  
-responses = {  
-    "what is cyberbullying": [  
-        "Cyberbullying is bullying that occurs through digital platforms.",  
-        "Cyberbullying involves using technology to harass, embarrass, or harm others.",  
-        "It can happen through social media, text messages, or websites."  
-    ],  
-    "how can i prevent cyberbullying": [  
-        "Encourage open communication about online experiences.",  
-        "Educate about the importance of not sharing personal information online.",  
-        "Report and block bullies on platforms and encourage others to do the same."  
-    ],  
-    "what should i do if i'm being bullied": [  
-        "Talk to a trusted adult about your experience.",  
-        "Document the instances of bullying.",  
-        "Consider reporting the behavior to the platform."  
-    ],  
-}  
+# 🔑 Paste your actual OpenAI API key here
+openai.api_key = "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"
 
-@app.route('/')  
-def home():  
-    return render_template('index.html')  # Serve the HTML file  
+@app.route("/")
+def index():
+    return render_template("index.html")
 
-@app.route('/api/ask', methods=['POST'])  # API endpoint for questions  
-def ask():  
-    user_question = request.form['question'].lower()  # Get user question in lowercase  
-    print(f"Received question: {user_question}")  # Debugging statement  
+@app.route("/chatbot", methods=["POST"])
+def chatbot():
+    user_input = request.json.get("message", "")
 
-    for key in responses:  
-        if key in user_question:  # Check if the question is in the predefined responses  
-            answer = random.choice(responses[key])  # Randomly select a response  
-            return jsonify({'answer': answer})  # Return the answer in JSON  
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",  # Or use "gpt-4" if you have access
+            messages=[
+                {"role": "system", "content": "You are a helpful and kind cyberbullying support assistant for children."},
+                {"role": "user", "content": user_input}
+            ],
+            temperature=0.7
+        )
+        reply = response['choices'][0]['message']['content']
+        return jsonify({"response": reply})
 
-    return jsonify({'answer': "I'm sorry, I don't have an answer for that."})  # Default response  
+    except Exception as e:
+        print(f"[ERROR] {e}")
+        return jsonify({"response": "Sorry, I'm having trouble answering right now."})
 
-# Vercel runs the app  
-if __name__ == "__main__":  
-    app.run()  
+if __name__ == "__main__":
+    app.run(debug=True)
